@@ -21,6 +21,8 @@
 		5566FE1425CB0E2C000E960C /* EventsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5566FE1325CB0E2C000E960C /* EventsManager.swift */; };
 		5566FE1C25CF024D000E960C /* EventsInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5566FE1B25CF024D000E960C /* EventsInfoResponse.swift */; };
 		5566FE2725CF5AEF000E960C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5566FE2625CF5AEF000E960C /* DetailViewController.swift */; };
+		5566FE4425D1E11C000E960C /* SearchBarExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5566FE4325D1E11C000E960C /* SearchBarExtensions.swift */; };
+		5566FE4C25D1E157000E960C /* TableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5566FE4B25D1E157000E960C /* TableViewExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		5566FE1325CB0E2C000E960C /* EventsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsManager.swift; sourceTree = "<group>"; };
 		5566FE1B25CF024D000E960C /* EventsInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsInfoResponse.swift; sourceTree = "<group>"; };
 		5566FE2625CF5AEF000E960C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		5566FE4325D1E11C000E960C /* SearchBarExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarExtensions.swift; sourceTree = "<group>"; };
+		5566FE4B25D1E157000E960C /* TableViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,7 @@
 		5566FD9A25CA22CD000E960C /* FetchRewardsEvents */ = {
 			isa = PBXGroup;
 			children = (
+				5566FE4225D1DFAA000E960C /* Utilities */,
 				5566FE0A25CB0759000E960C /* Controller */,
 				5566FE0925CB074E000E960C /* View */,
 				5566FE0825CB073F000E960C /* Model */,
@@ -168,6 +173,15 @@
 				5566FE2625CF5AEF000E960C /* DetailViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		5566FE4225D1DFAA000E960C /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				5566FE4325D1E11C000E960C /* SearchBarExtensions.swift */,
+				5566FE4B25D1E157000E960C /* TableViewExtensions.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,8 +316,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5566FE1425CB0E2C000E960C /* EventsManager.swift in Sources */,
+				5566FE4425D1E11C000E960C /* SearchBarExtensions.swift in Sources */,
 				5566FDA025CA22CD000E960C /* EventsViewController.swift in Sources */,
 				5566FDDB25CA2AE5000E960C /* TableViewCell.swift in Sources */,
+				5566FE4C25D1E157000E960C /* TableViewExtensions.swift in Sources */,
 				5566FE1C25CF024D000E960C /* EventsInfoResponse.swift in Sources */,
 				5566FD9C25CA22CD000E960C /* AppDelegate.swift in Sources */,
 				5566FE0425CA58B9000E960C /* EventsInfo.swift in Sources */,

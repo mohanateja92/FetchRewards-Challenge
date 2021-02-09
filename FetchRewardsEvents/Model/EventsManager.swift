@@ -11,9 +11,11 @@ struct EventsManager {
     
     //Client Id should be stored somewhere else, can't be exposed directly
     
-    func fetchEvents(completionHandler: @escaping (([EventsInfo]) -> Void)) {
-        let urlString = "https://api.seatgeek.com/2/events?client_id=MjE1MjU4NDV8MTYxMjM3Njk0Ny42NjU5Nzc3"
+    func fetchEvents(page: Int, completionHandler: @escaping (([EventsInfo]) -> Void)) {
+        let eventsURL = "https://api.seatgeek.com/2/events?client_id=MjE1MjU4NDV8MTYxMjM3Njk0Ny42NjU5Nzc3"
+        let urlString = "\(eventsURL)&per_page=10&page=\(page)"
         //Create a URL Object
+        
         if let url = URL(string: urlString) {
             //Create a URL Session
             let session = URLSession(configuration: .default)
