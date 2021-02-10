@@ -8,5 +8,6 @@
 import Foundation
 
 struct EventsInfo: Decodable {
+    var id: Int?
     var title: String?
 }

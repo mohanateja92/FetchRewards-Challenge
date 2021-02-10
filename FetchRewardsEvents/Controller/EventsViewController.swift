@@ -20,17 +20,15 @@ final class EventsViewController: UIViewController {
     //currEvents represents what we are looking at currently as we are going through search
     var currEvents: [EventsInfo]?
     var eventManager = EventsManager()
+    var favoriteEventsManager = FavoriteEventsManager(favoritesArray:[])
     var loadingData = false
-    
-    struct Constants {
-        static let eventsViewTableCell = "com.events.EventCell"
-        static let segueIdentifier =  "com.events.DetailViewSegue"
-    }
+    let detailViewControler = DetailViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         eventsView.dataSource = self
         eventsView.delegate = self
+        detailViewControler.delegate = self
         
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
@@ -46,6 +44,10 @@ final class EventsViewController: UIViewController {
                 self?.eventsView.reloadData()
             }
         })
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        favoriteEventsManager.printUserDefaults()
     }
     
     func filterCurrentEvents(searchTerm: String) {
@@ -67,5 +69,6 @@ final class EventsViewController: UIViewController {
     }
     
 }
+
 
 

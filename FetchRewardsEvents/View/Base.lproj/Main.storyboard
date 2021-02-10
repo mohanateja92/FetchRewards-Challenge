@@ -53,8 +53,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vmt-aO-LNV">
+                                <rect key="frame" x="273" y="408" width="121" height="53"/>
+                                <state key="normal" title="Button" image="heart" catalog="system"/>
+                                <connections>
+                                    <action selector="favoriteButtonClicked:" destination="wUF-8f-WGr" eventType="touchUpInside" id="OsG-xH-qsP"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WJd-te-AmY">
-                                <rect key="frame" x="49" y="315" width="287" height="238"/>
+                                <rect key="frame" x="20" y="315" width="245" height="238"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="245" id="WqG-u2-dB5"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -63,15 +73,19 @@
                         <viewLayoutGuide key="safeArea" id="H4d-fa-QSF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="H4d-fa-QSF" firstAttribute="bottom" secondItem="WJd-te-AmY" secondAttribute="bottom" constant="309" id="ACo-rL-DzK"/>
-                            <constraint firstItem="WJd-te-AmY" firstAttribute="top" secondItem="H4d-fa-QSF" secondAttribute="top" constant="227" id="AfD-kb-bfI"/>
-                            <constraint firstItem="WJd-te-AmY" firstAttribute="leading" secondItem="H4d-fa-QSF" secondAttribute="leading" constant="49" id="deo-CU-jH8"/>
-                            <constraint firstItem="H4d-fa-QSF" firstAttribute="trailing" secondItem="WJd-te-AmY" secondAttribute="trailing" constant="78" id="g3N-4C-rgf"/>
+                            <constraint firstItem="vmt-aO-LNV" firstAttribute="leading" secondItem="WJd-te-AmY" secondAttribute="trailing" constant="8" symbolic="YES" id="2DH-LO-REq"/>
+                            <constraint firstItem="WJd-te-AmY" firstAttribute="top" secondItem="H4d-fa-QSF" secondAttribute="top" constant="227" id="Lcj-vv-1cP"/>
+                            <constraint firstItem="WJd-te-AmY" firstAttribute="leading" secondItem="H4d-fa-QSF" secondAttribute="leading" constant="20" id="WKy-c7-IbC"/>
+                            <constraint firstItem="H4d-fa-QSF" firstAttribute="bottom" secondItem="vmt-aO-LNV" secondAttribute="bottom" constant="401" id="n1o-NL-wcN"/>
+                            <constraint firstItem="vmt-aO-LNV" firstAttribute="top" secondItem="H4d-fa-QSF" secondAttribute="top" constant="320" id="tNH-nC-u8K"/>
+                            <constraint firstItem="H4d-fa-QSF" firstAttribute="trailing" secondItem="vmt-aO-LNV" secondAttribute="trailing" constant="20" id="v3h-s3-PK6"/>
+                            <constraint firstItem="H4d-fa-QSF" firstAttribute="bottom" secondItem="WJd-te-AmY" secondAttribute="bottom" constant="309" id="yif-t7-UM8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="eVi-dZ-Woi"/>
                     <connections>
                         <outlet property="detailEventLabel" destination="WJd-te-AmY" id="vTz-LE-EoP"/>
+                        <outlet property="favoriteButton" destination="vmt-aO-LNV" id="vKM-o3-5Wl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nob-cj-Avm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -98,6 +112,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="heart" catalog="system" width="128" height="109"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
