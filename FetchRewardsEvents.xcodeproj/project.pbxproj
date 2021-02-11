@@ -25,6 +25,7 @@
 		5566FE4C25D1E157000E960C /* EventsTableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5566FE4B25D1E157000E960C /* EventsTableViewExtensions.swift */; };
 		5566FE6325D2DFA7000E960C /* FavoriteEventsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5566FE6225D2DFA7000E960C /* FavoriteEventsManager.swift */; };
 		5566FE6C25D2EB77000E960C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5566FE6B25D2EB77000E960C /* Constants.swift */; };
+		5566FE8025D43FD9000E960C /* EventImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5566FE7F25D43FD9000E960C /* EventImageManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		5566FE4B25D1E157000E960C /* EventsTableViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTableViewExtensions.swift; sourceTree = "<group>"; };
 		5566FE6225D2DFA7000E960C /* FavoriteEventsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteEventsManager.swift; sourceTree = "<group>"; };
 		5566FE6B25D2EB77000E960C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		5566FE7F25D43FD9000E960C /* EventImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventImageManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 				5566FE0325CA58B9000E960C /* EventsInfo.swift */,
 				5566FE1325CB0E2C000E960C /* EventsManager.swift */,
 				5566FE6225D2DFA7000E960C /* FavoriteEventsManager.swift */,
+				5566FE7F25D43FD9000E960C /* EventImageManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				5566FDA025CA22CD000E960C /* EventsViewController.swift in Sources */,
 				5566FDDB25CA2AE5000E960C /* TableViewCell.swift in Sources */,
 				5566FE6325D2DFA7000E960C /* FavoriteEventsManager.swift in Sources */,
+				5566FE8025D43FD9000E960C /* EventImageManager.swift in Sources */,
 				5566FE4C25D1E157000E960C /* EventsTableViewExtensions.swift in Sources */,
 				5566FE1C25CF024D000E960C /* EventsInfoResponse.swift in Sources */,
 				5566FD9C25CA22CD000E960C /* AppDelegate.swift in Sources */,
