@@ -20,15 +20,15 @@ final class EventsViewController: UIViewController {
     //currEvents represents what we are looking at currently as we are going through search
     var currEvents: [EventsInfo]?
     var eventManager = EventsManager()
-    var favoriteEventsManager = FavoriteEventsManager(favoritesArray:[])
+    var favoriteEventsManager = FavoriteEventsManager()
     var loadingData = false
-    let detailViewControler = DetailViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         eventsView.dataSource = self
         eventsView.delegate = self
-        detailViewControler.delegate = self
+        eventsView.rowHeight = UITableView.automaticDimension
+        
         
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self

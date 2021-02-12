@@ -8,12 +8,12 @@
 import UIKit
 
 protocol FavoriteCellUpdateDelegate: class {
-    func updateFavoriteCell(_ indexPath: IndexPath)
+    func updateFavoriteCell(_ indexPath: IndexPath) 
 }
 
 class DetailViewController : UIViewController { 
     @IBOutlet weak var detailEventLabel: UILabel!
-    @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var favoriteButton: HeartButton!
     
     weak var delegate: FavoriteCellUpdateDelegate?
     
@@ -23,17 +23,22 @@ class DetailViewController : UIViewController {
     
     override func viewDidLoad() {
         detailEventLabel.text = event?.title ?? ""
+        guard let eventId = event?.id, let favoriteEventsManager = favoriteEventsManager else {return }
+        if favoriteEventsManager.containsFav(eventId) {
+            favoriteButton.filled = true
+        }
+        
     }
     
-    @IBAction func favoriteButtonClicked(_ sender: UIButton) {
+    @IBAction func favoriteButtonClicked(_ sender: HeartButton) {
         guard let eventId = event?.id, let favoriteEventsManager = favoriteEventsManager, let cellIndexPath = cellIndexPath  else { return }
         
         if favoriteEventsManager.containsFav(eventId) {
             favoriteEventsManager.removeFav(eventId)
-//            unlike button
+            favoriteButton.filled = false
         } else {
             favoriteEventsManager.addFav(eventId)
-//            like button
+            favoriteButton.filled = true
         }
         self.delegate?.updateFavoriteCell(cellIndexPath)
         //toggle button
