@@ -36,7 +36,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="2mw-0J-2kI"/>
                     <connections>
-                        <outlet property="eventsView" destination="XFH-Ey-fG4" id="D08-76-XY1"/>
+                        <outlet property="eventsTableView" destination="XFH-Ey-fG4" id="D08-76-XY1"/>
                         <outlet property="searchBarContainerView" destination="R2b-kF-3qQ" id="qaY-uF-dT8"/>
                         <segue destination="wUF-8f-WGr" kind="show" identifier="com.events.DetailViewSegue" id="aCY-4D-Iy8"/>
                     </connections>
@@ -109,7 +109,6 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="itL-TZ-ikK" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AXl-PB-o1t">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

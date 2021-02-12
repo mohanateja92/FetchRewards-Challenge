@@ -30,14 +30,12 @@ class EventImageManager: UIImageView {
                     if let safeData = data {
                         if let imageToCache = UIImage(data: safeData) {
                             if let uString = self.image_url, uString == imageURLString {
-                              DispatchQueue.main.async {
-                                self.image = imageToCache
+                                DispatchQueue.main.async {
+                                    self.image = imageToCache
+                                }
                             }
-                            }
-                            
                             imageCache.setObject(imageToCache, forKey: imageURLString as AnyObject)
                         }
-                        
                         
                     }
                 }

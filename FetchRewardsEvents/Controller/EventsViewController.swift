@@ -9,25 +9,25 @@ import UIKit
 
 final class EventsViewController: UIViewController {
     
-    @IBOutlet weak var eventsView: UITableView!
-    
+    @IBOutlet weak var eventsTableView: UITableView!
     @IBOutlet weak var searchBarContainerView: UIView!
     var searchController: UISearchController!
+    // Need to be dynamically pulled
     let totalEvents = 121712
     var pageNumber = 1
     //Original DataSource of all the events
     var events: [EventsInfo]?
-    //currEvents represents what we are looking at currently as we are going through search
-    var currEvents: [EventsInfo]?
+    //currentEvents represents what we are looking at currently as we are going through search
+    var currentEvents: [EventsInfo]?
     var eventManager = EventsManager()
     var favoriteEventsManager = FavoriteEventsManager()
     var loadingData = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        eventsView.dataSource = self
-        eventsView.delegate = self
-        eventsView.rowHeight = UITableView.automaticDimension
+        eventsTableView.dataSource = self
+        eventsTableView.delegate = self
+        eventsTableView.rowHeight = UITableView.automaticDimension
         
         
         searchController = UISearchController(searchResultsController: nil)
@@ -36,38 +36,38 @@ final class EventsViewController: UIViewController {
         searchBarContainerView.addSubview(searchController.searchBar)
         searchController.searchBar.delegate = self
         
-        eventsView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: Constants.eventsViewTableCell)
+        eventsTableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: Constants.eventsViewTableCell)
         eventManager.fetchEvents (page: pageNumber, completionHandler: { [weak self] (events) in
             self?.events = events
-            self?.currEvents = self?.events
+            self?.currentEvents = self?.events
             DispatchQueue.main.async {
-                self?.eventsView.reloadData()
+                self?.eventsTableView.reloadData()
             }
         })
     }
     
     override func viewWillAppear(_ animated: Bool) {
         favoriteEventsManager.printUserDefaults()
+        eventsTableView.reloadData()
     }
     
     func filterCurrentEvents(searchTerm: String) {
         if searchTerm.count > 0  {
-            currEvents = events
-            let filteredEvents = currEvents?.filter({ (eventsInfo) -> Bool in
+            currentEvents = events
+            let filteredEvents = currentEvents?.filter({ (eventsInfo) -> Bool in
                 let parsedTitle = eventsInfo.title?.replacingOccurrences(of: " ", with: "").lowercased() ?? ""
                 let parsedSearchTerm = searchTerm.replacingOccurrences(of: " ", with: "").lowercased()
                 return parsedTitle.contains(parsedSearchTerm)
             })
-            currEvents = filteredEvents
-            eventsView.reloadData()
+            currentEvents = filteredEvents
+            eventsTableView.reloadData()
         }
     }
     
     func restoreCurrEvents() {
-        currEvents = events
-        eventsView.reloadData()
+        currentEvents = events
+        eventsTableView.reloadData()
     }
-    
 }
 
 

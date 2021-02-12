@@ -10,19 +10,27 @@ import Foundation
 struct EventsInfo: Decodable {
     var id: Int?
     var title: String?
+    var isFavorite: Bool? {
+        guard let id = self.id else {
+            return false
+        }
+        return  FavoriteEventsManager().containsFav(id)
+    }
     let performers: [Performers]?
     let venue: Venue?
-    var date_time_utc: String? {
+    var datetime_utc: String?
+    
+    var eventDate: String {
+        guard let eventDate = self.datetime_utc else { return "" }
         let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
 
         let dateFormatterPrint = DateFormatter()
         dateFormatterPrint.dateFormat = "EEEE, MMM dd yyyy h:mm a"
 
-        let date: Date? = dateFormatterGet.date(from:"2021-02-10T03:30:00")
-        return dateFormatterPrint.string(from: date!)
+        guard let date = dateFormatterGet.date(from: eventDate) else { return "" }
+        return dateFormatterPrint.string(from: date)
     }
-    
 }
 struct Performers: Decodable {
     let image: String?
