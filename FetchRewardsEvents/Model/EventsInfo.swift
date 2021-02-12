@@ -10,7 +10,7 @@ import Foundation
 struct EventsInfo: Decodable {
     var id: Int?
     var title: String?
-    let performers: Performers?
+    let performers: [Performers]?
     let venue: Venue?
     var date_time_utc: String? {
         let dateFormatterGet = DateFormatter()
@@ -25,7 +25,7 @@ struct EventsInfo: Decodable {
     
 }
 struct Performers: Decodable {
-    let image_url: String?
+    let image: String?
 }
 
 struct Venue: Decodable {

@@ -45,7 +45,7 @@
             </objects>
             <point key="canvasLocation" x="2.8985507246376816" y="79.6875"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--Title-->
         <scene sceneID="bbD-nl-4MA">
             <objects>
                 <viewController id="wUF-8f-WGr" customClass="DetailViewController" customModule="FetchRewardsEvents" customModuleProvider="target" sceneMemberID="viewController">
@@ -53,13 +53,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vmt-aO-LNV">
-                                <rect key="frame" x="273" y="408" width="121" height="53"/>
-                                <state key="normal" title="Button" image="heart" catalog="system"/>
-                                <connections>
-                                    <action selector="favoriteButtonClicked:" destination="wUF-8f-WGr" eventType="touchUpInside" id="OsG-xH-qsP"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WJd-te-AmY">
                                 <rect key="frame" x="20" y="315" width="245" height="238"/>
                                 <constraints>
@@ -69,23 +62,41 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qnc-Sf-OUD" customClass="HeartButton" customModule="FetchRewardsEvents" customModuleProvider="target">
+                                <rect key="frame" x="323" y="419" width="46" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="DoV-9I-kFk"/>
+                                    <constraint firstAttribute="width" constant="46" id="u3F-pA-18Q"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemRedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="strokeWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="strokeColor">
+                                        <color key="value" systemColor="systemRedColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="filled" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="favoriteButtonClicked:" destination="wUF-8f-WGr" eventType="touchUpInside" id="ddF-8g-EAu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="H4d-fa-QSF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="vmt-aO-LNV" firstAttribute="leading" secondItem="WJd-te-AmY" secondAttribute="trailing" constant="8" symbolic="YES" id="2DH-LO-REq"/>
                             <constraint firstItem="WJd-te-AmY" firstAttribute="top" secondItem="H4d-fa-QSF" secondAttribute="top" constant="227" id="Lcj-vv-1cP"/>
+                            <constraint firstItem="Qnc-Sf-OUD" firstAttribute="top" secondItem="H4d-fa-QSF" secondAttribute="top" constant="331" id="M2M-Q1-NlK"/>
                             <constraint firstItem="WJd-te-AmY" firstAttribute="leading" secondItem="H4d-fa-QSF" secondAttribute="leading" constant="20" id="WKy-c7-IbC"/>
-                            <constraint firstItem="H4d-fa-QSF" firstAttribute="bottom" secondItem="vmt-aO-LNV" secondAttribute="bottom" constant="401" id="n1o-NL-wcN"/>
-                            <constraint firstItem="vmt-aO-LNV" firstAttribute="top" secondItem="H4d-fa-QSF" secondAttribute="top" constant="320" id="tNH-nC-u8K"/>
-                            <constraint firstItem="H4d-fa-QSF" firstAttribute="trailing" secondItem="vmt-aO-LNV" secondAttribute="trailing" constant="20" id="v3h-s3-PK6"/>
+                            <constraint firstItem="Qnc-Sf-OUD" firstAttribute="leading" secondItem="WJd-te-AmY" secondAttribute="trailing" constant="58" id="cje-5t-SpN"/>
                             <constraint firstItem="H4d-fa-QSF" firstAttribute="bottom" secondItem="WJd-te-AmY" secondAttribute="bottom" constant="309" id="yif-t7-UM8"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="eVi-dZ-Woi"/>
+                    <navigationItem key="navigationItem" title="Title" id="3Bt-jc-wUA"/>
                     <connections>
                         <outlet property="detailEventLabel" destination="WJd-te-AmY" id="vTz-LE-EoP"/>
-                        <outlet property="favoriteButton" destination="vmt-aO-LNV" id="vKM-o3-5Wl"/>
+                        <outlet property="favoriteButton" destination="Qnc-Sf-OUD" id="XUY-DX-ePe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nob-cj-Avm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -111,10 +122,17 @@
             <point key="canvasLocation" x="-907.24637681159425" y="79.6875"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="Qnc-Sf-OUD">
+            <size key="intrinsicContentSize" width="30" height="34"/>
+        </designable>
+    </designables>
     <resources>
-        <image name="heart" catalog="system" width="128" height="109"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

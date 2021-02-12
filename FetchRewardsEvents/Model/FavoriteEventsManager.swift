@@ -8,11 +8,11 @@
 import Foundation
 
 class FavoriteEventsManager {
-    var favoritesArray: [Int]
+    var favoritesArray = [Int]()
     let userDefaults = UserDefaults.standard
     
-    init(favoritesArray: [Int]) {
-        self.favoritesArray = favoritesArray
+    init() {
+        self.favoritesArray = userDefaults.object(forKey: Constants.userDefaultsKey) as? [Int] ?? []
     }
     
     func containsFav(_ eventId: Int) -> Bool {

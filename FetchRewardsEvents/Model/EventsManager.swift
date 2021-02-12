@@ -34,7 +34,6 @@ struct EventsManager {
             task.resume()
         }
         
-        
     }
     
     func parseJSON(eventsData: Data) -> [EventsInfo]? {
