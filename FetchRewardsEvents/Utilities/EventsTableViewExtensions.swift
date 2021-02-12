@@ -14,13 +14,19 @@ extension EventsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.eventsViewTableCell, for: indexPath) as? TableViewCell else { fatalError("Unable to find the cell for reuse") }
-        guard let eventInfo = currEvents?[indexPath.row] else { return UITableViewCell() }
+        guard let eventInfo = currEvents?[indexPath.row], let id = eventInfo.id else { return UITableViewCell() }
+        
+        if favoriteEventsManager.containsFav(id) {
+            cell.heartButton.isHidden = false
+        } else {
+            cell.heartButton.isHidden = true
+        }
     
         cell.eventNameLabel.text = eventInfo.title ?? ""
         cell.eventLocationLabel.text = eventInfo.venue?.display_location ?? ""
         cell.eventDateTimeLabel.text = eventInfo.date_time_utc ?? ""
-        if let imageString = eventInfo.performers?.image_url {
-            cell.eventImageView.fetchEventImageFromURL(imageURLString: imageString)
+        if let imageString = eventInfo.performers?[0].image {
+            //cell.eventImageView.fetchEventImageFromURL(imageURLString: imageString)
         }
         
         return cell
@@ -65,6 +71,7 @@ extension EventsViewController: UITableViewDataSource, UITableViewDelegate {
         if segue.identifier == Constants.segueIdentifier{
             if let indexPath = self.eventsView.indexPathForSelectedRow {
                 if let controller = segue.destination as? DetailViewController {
+                    controller.delegate = self
                     controller.event = events?[indexPath.row]
                     controller.favoriteEventsManager = favoriteEventsManager
                     controller.cellIndexPath = indexPath
@@ -77,7 +84,7 @@ extension EventsViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension EventsViewController: FavoriteCellUpdateDelegate {
     func updateFavoriteCell(_ indexPath: IndexPath) {
-        eventsView.reloadRows(at: [indexPath], with: <#T##UITableView.RowAnimation#>)
+        eventsView.reloadRows(at: [indexPath], with: .none)
     }
 }
 
