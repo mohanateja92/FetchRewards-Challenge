@@ -14,6 +14,7 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var eventLocationLabel: UILabel!
     @IBOutlet weak var eventDateTimeLabel: UILabel!
     
+    @IBOutlet weak var heartButton: HeartButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
