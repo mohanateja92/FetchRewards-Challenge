@@ -12,7 +12,6 @@ final class EventsViewController: UIViewController {
     @IBOutlet weak var eventsTableView: UITableView!
     @IBOutlet weak var searchBarContainerView: UIView!
     var searchController: UISearchController!
-    // Need to be dynamically pulled
     let totalEvents = 121712
     var pageNumber = 1
     //Original DataSource of all the events
@@ -25,15 +24,17 @@ final class EventsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         eventsTableView.dataSource = self
         eventsTableView.delegate = self
         eventsTableView.rowHeight = UITableView.automaticDimension
-        
-        
+        eventsTableView.scrollsToTop = true
+    
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchBarContainerView.addSubview(searchController.searchBar)
+        //searchBarContainerView.addSubview(searchController.searchBar)
+        self.navigationItem.searchController = searchController
         searchController.searchBar.delegate = self
         
         eventsTableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: Constants.eventsViewTableCell)
@@ -47,8 +48,13 @@ final class EventsViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.title = "Events"
         favoriteEventsManager.printUserDefaults()
         eventsTableView.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.title = ""
     }
     
     func filterCurrentEvents(searchTerm: String) {
