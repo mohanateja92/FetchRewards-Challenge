@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TableViewCell: UITableViewCell {
+class EventsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var eventImageView: EventImageManager!

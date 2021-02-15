@@ -14,7 +14,7 @@ struct EventsInfo: Decodable {
         guard let id = self.id else {
             return false
         }
-        return  FavoriteEventsManager().containsFav(id)
+        return  FavoriteEventsUserDefaultsManager(userDefaults: UserDefaults.standard).containsFav(id)
     }
     let performers: [Performers]?
     let venue: Venue?

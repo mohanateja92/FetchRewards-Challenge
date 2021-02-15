@@ -15,7 +15,7 @@ class DetailViewController : UIViewController {
     @IBOutlet weak var eventLocationLabel: UILabel!
     
     var event: EventsInfo?
-    var favoriteEventsManager: FavoriteEventsManager?
+    var favoriteEventsManager: FavoriteEventsUserDefaultsManager?
     var cellIndexPath: IndexPath?
     
     override func viewDidLoad() {
@@ -46,6 +46,5 @@ class DetailViewController : UIViewController {
             favoriteEventsManager.addFav(eventId)
             favoriteButton.filled = true
         }
-        favoriteEventsManager.updateUserDefaults()
     }
 }

@@ -19,7 +19,9 @@ final class EventsViewController: UIViewController {
     //currentEvents represents what we are looking at currently as we are going through search
     var currentEvents: [EventsInfo]?
     var eventManager = EventsManager()
-    var favoriteEventsManager = FavoriteEventsManager()
+    lazy var favoriteEventsManager = {
+        return FavoriteEventsUserDefaultsManager(userDefaults: UserDefaults.standard)
+    }()
     var loadingData = false
     
     override func viewDidLoad() {
@@ -37,7 +39,7 @@ final class EventsViewController: UIViewController {
         self.navigationItem.searchController = searchController
         searchController.searchBar.delegate = self
         
-        eventsTableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: Constants.eventsViewTableCell)
+        eventsTableView.register(UINib(nibName: Constants.eventsTableCellNibName, bundle: nil), forCellReuseIdentifier: Constants.eventsViewTableCell)
         eventManager.fetchEvents (page: pageNumber, completionHandler: { [weak self] (events) in
             self?.events = events
             self?.currentEvents = self?.events
@@ -49,7 +51,6 @@ final class EventsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.title = "Events"
-        favoriteEventsManager.printUserDefaults()
         eventsTableView.reloadData()
     }
     

@@ -13,7 +13,7 @@ extension EventsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.eventsViewTableCell, for: indexPath) as? TableViewCell else { fatalError("Unable to find the cell for reuse") }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.eventsViewTableCell, for: indexPath) as? EventsTableViewCell else { fatalError("Unable to find the cell for reuse") }
         guard let eventInfo = currentEvents?[indexPath.row] else { return UITableViewCell() }
         cell.heartButton.isHidden = !(eventInfo.isFavorite ?? false)
         cell.eventNameLabel.text = eventInfo.title ?? ""

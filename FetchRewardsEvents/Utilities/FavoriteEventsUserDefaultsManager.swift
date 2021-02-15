@@ -7,34 +7,31 @@
 
 import Foundation
 
-class FavoriteEventsManager {
-    var favoritesArray = [Int]()
-    let userDefaults = UserDefaults.standard
+class FavoriteEventsUserDefaultsManager {
+    private var favoritesArray = [Int]()
+    private var userDefaults: UserDefaults!
     
-    init() {
+    init(userDefaults: UserDefaults) {
+        self.userDefaults = userDefaults
         self.favoritesArray = userDefaults.object(forKey: Constants.userDefaultsKey) as? [Int] ?? []
     }
     
     func containsFav(_ eventId: Int) -> Bool {
-        //CHHEECKKK HEREEE
         return favoritesArray.contains(eventId)
     }
     
     func removeFav(_ eventId: Int) {
-        guard let index = favoritesArray.firstIndex(of: eventId) else{ return }
+        guard let index = favoritesArray.firstIndex(of: eventId) else { return }
         favoritesArray.remove(at: index)
+        updateUserDefaults()
     }
     
     func addFav(_ eventId: Int) {
         favoritesArray.append(eventId)
+        updateUserDefaults()
     }
     
-    func updateUserDefaults() {
+    private func updateUserDefaults() {
         userDefaults.set(favoritesArray, forKey: Constants.userDefaultsKey)
-    }
-    
-    func printUserDefaults() {
-        let favorites = userDefaults.object(forKey: Constants.userDefaultsKey) as? [Int]
-        print( "\(favorites ?? [])")
     }
 }
